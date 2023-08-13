@@ -1,5 +1,6 @@
 package com.example.springproject.employee;
 
+import com.example.springproject.common.SearchCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -65,5 +66,12 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public Page<Employee> paging(Integer page, Integer size) {
         return repository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
+    }
+
+    @Override
+    public List<Employee> search(List<SearchCriteria> searchCriteria) {
+        EmployeeSpecification employeeSpecification = new EmployeeSpecification();
+        searchCriteria.forEach(employeeSpecification::add);
+        return repository.findAll(employeeSpecification);
     }
 }

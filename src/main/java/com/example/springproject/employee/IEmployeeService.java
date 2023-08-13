@@ -1,5 +1,6 @@
 package com.example.springproject.employee;
 
+import com.example.springproject.common.SearchCriteria;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public interface IEmployeeService {
 
     Page<Employee> paging(Integer page, Integer size);
 
+    List<Employee> search(List<SearchCriteria> list);
 }

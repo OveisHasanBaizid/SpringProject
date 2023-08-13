@@ -1,6 +1,7 @@
 package com.example.springproject.employee;
 
 import com.example.springproject.common.PagingData;
+import com.example.springproject.common.SearchCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 public class EmployeeController {
 
     private final IEmployeeService service;
-    private EmployeeMapper mapper;
+    private final EmployeeMapper mapper;
 
     public EmployeeController(IEmployeeService service, EmployeeMapper mapper) {
         this.service = service;
@@ -25,6 +26,11 @@ public class EmployeeController {
         Employee employee = mapper.toEmployee(employeeDTO);
         service.save(employee);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+    @PostMapping("/v1/search")
+    public ResponseEntity<List<EmployeeDTO>> search(@RequestBody List<SearchCriteria> searchCriteria) {
+        List<Employee> employees = service.search(searchCriteria);
+        return ResponseEntity.ok(mapper.toEmployeeDTOs(employees));
     }
 
     @PutMapping("/v1")

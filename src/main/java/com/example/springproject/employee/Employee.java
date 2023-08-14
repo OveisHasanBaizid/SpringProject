@@ -1,10 +1,12 @@
 package com.example.springproject.employee;
 
 
+import com.example.springproject.family.Family;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_employee")
@@ -46,6 +48,9 @@ public class Employee {
 
     @Column(name = "child_count")
     private Integer childCount;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<Family> families;
 
     public Employee(Long id, @NotNull String name, @NotNull String family, @NotNull String nationalCode, @NotNull Gender gender, @NotNull Date birthDay, @NotNull Boolean isMarried, Integer childCount) {
         this.id = id;

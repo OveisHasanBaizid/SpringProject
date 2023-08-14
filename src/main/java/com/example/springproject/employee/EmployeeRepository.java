@@ -3,8 +3,8 @@ package com.example.springproject.employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long>
+public interface EmployeeRepository extends JpaRepository<Employee, Long>
         , JpaSpecificationExecutor<Employee> {
     List<Employee> findAllByIsMarried(Boolean isMarried);
 
@@ -33,4 +33,6 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
     Optional<Employee> findById(Long id);
 
     List<Employee> findAll();
+
+    long count();
 }

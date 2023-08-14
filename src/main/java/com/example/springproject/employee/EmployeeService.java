@@ -1,6 +1,7 @@
 package com.example.springproject.employee;
 
 import com.example.springproject.common.SearchCriteria;
+import com.example.springproject.common.exception.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -48,7 +49,7 @@ public class EmployeeService implements IEmployeeService {
         Optional<Employee> optionalEmployee = repository.findById(id);
 
         if (optionalEmployee.isEmpty())
-            throw new RuntimeException("Not Found");
+            throw new NotFoundException("Not Found");
 
         return optionalEmployee.get();
     }

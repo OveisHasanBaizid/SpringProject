@@ -2,6 +2,7 @@ package com.example.springproject.employee;
 
 
 import com.example.springproject.family.Family;
+import com.example.springproject.post_employee.PostEmployee;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -51,6 +52,9 @@ public class Employee {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Family> families;
+
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "employee" ,cascade = CascadeType.ALL)
+    private List<PostEmployee> postEmployeeList;
 
     public Employee(Long id, @NotNull String name, @NotNull String family, @NotNull String nationalCode, @NotNull Gender gender, @NotNull Date birthDay, @NotNull Boolean isMarried, Integer childCount) {
         this.id = id;

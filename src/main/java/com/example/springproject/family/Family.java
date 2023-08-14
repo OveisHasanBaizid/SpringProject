@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tbl_family" , uniqueConstraints = {@UniqueConstraint(columnNames = {"national_code","employee_id"})})
+@Table(name = "tbl_family" , uniqueConstraints = {@UniqueConstraint(columnNames = {"national_code", "employee_id"})})
 public class Family {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

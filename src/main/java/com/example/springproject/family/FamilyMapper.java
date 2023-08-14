@@ -6,11 +6,13 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring" , uses = {EmployeeMapper.class})
-public interface IFamilyMapper {
+@Mapper(componentModel = "spring", uses = {EmployeeMapper.class})
+public interface FamilyMapper {
     Family toFamily(FamilyDTO familyDTO);
+
     FamilyDTO toFamilyDTO(Family family);
 
     List<Family> toFamilyList(List<FamilyDTO> familyDTOS);
+
     List<FamilyDTO> toFamilyDTOS(List<Family> families);
 }

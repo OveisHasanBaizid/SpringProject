@@ -11,9 +11,9 @@ import java.util.List;
 public class FamilyController {
 
     private final IFamilyService service;
-    private final IFamilyMapper mapper;
+    private final FamilyMapper mapper;
 
-    public FamilyController(IFamilyService service, IFamilyMapper mapper) {
+    public FamilyController(IFamilyService service, FamilyMapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }

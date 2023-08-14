@@ -2,7 +2,7 @@ package com.example.springproject.family;
 
 import java.util.List;
 
-public interface IFamilyService{
+public interface IFamilyService {
     Family save(Family family);
 
     void delete(Long id);

@@ -1,0 +1,11 @@
+package com.example.springproject.file_attachments;
+
+import com.example.springproject.employee.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface FileAttachmentRepository extends JpaRepository<FileAttachment, Long> {
+
+    FileAttachment findByEmployee(Employee employee);
+}

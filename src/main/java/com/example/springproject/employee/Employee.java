@@ -1,6 +1,7 @@
 package com.example.springproject.employee;
 
 
+import com.example.springproject.file_attachments.FileAttachment;
 import com.example.springproject.family.Family;
 import com.example.springproject.post_employee.PostEmployee;
 import jakarta.persistence.*;
@@ -56,6 +57,9 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "employee" ,cascade = CascadeType.ALL)
     private List<PostEmployee> postEmployeeList;
 
+    @OneToOne(fetch = FetchType.LAZY,mappedBy ="employee",cascade = CascadeType.ALL)
+    private FileAttachment fileAttachment;
+
     public Employee(Long id, @NotNull String name, @NotNull String family, @NotNull String nationalCode, @NotNull Gender gender, @NotNull Date birthDay, @NotNull Boolean isMarried, Integer childCount) {
         this.id = id;
         this.name = name;
@@ -68,6 +72,38 @@ public class Employee {
     }
 
     public Employee() {
+    }
+
+    public Boolean getMarried() {
+        return isMarried;
+    }
+
+    public void setMarried(Boolean married) {
+        isMarried = married;
+    }
+
+    public List<Family> getFamilies() {
+        return families;
+    }
+
+    public void setFamilies(List<Family> families) {
+        this.families = families;
+    }
+
+    public List<PostEmployee> getPostEmployeeList() {
+        return postEmployeeList;
+    }
+
+    public void setPostEmployeeList(List<PostEmployee> postEmployeeList) {
+        this.postEmployeeList = postEmployeeList;
+    }
+
+    public FileAttachment getFileAttachment() {
+        return fileAttachment;
+    }
+
+    public void setFileAttachment(FileAttachment fileAttachment) {
+        this.fileAttachment = fileAttachment;
     }
 
     public void setId(Long id) {

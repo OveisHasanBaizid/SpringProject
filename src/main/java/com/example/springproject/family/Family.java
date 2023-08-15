@@ -1,16 +1,13 @@
 package com.example.springproject.family;
 
+import com.example.springproject.common.BaseEntity;
 import com.example.springproject.employee.Employee;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tbl_family" , uniqueConstraints = {@UniqueConstraint(columnNames = {"national_code", "employee_id"})})
-public class Family {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Family extends BaseEntity {
     @NotNull
     @Column(name = "full_name")
     private String fullName;
@@ -24,24 +21,13 @@ public class Family {
     private Employee employee;
 
     public Family(Long id, String fullName, String nationalCode, Employee employee) {
-        this.id = id;
         this.fullName = fullName;
         this.nationalCode = nationalCode;
         this.employee = employee;
     }
-
     public Family() {
 
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getFullName() {
         return fullName;
     }

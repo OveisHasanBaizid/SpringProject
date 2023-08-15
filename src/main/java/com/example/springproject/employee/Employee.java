@@ -1,6 +1,7 @@
 package com.example.springproject.employee;
 
 
+import com.example.springproject.common.BaseEntity;
 import com.example.springproject.file_attachments.FileAttachment;
 import com.example.springproject.family.Family;
 import com.example.springproject.post_employee.PostEmployee;
@@ -12,12 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tbl_employee")
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Employee extends BaseEntity {
     @NotNull
     @Column(name = "name")
     private String name;
@@ -60,17 +56,6 @@ public class Employee {
     @OneToOne(fetch = FetchType.LAZY,mappedBy ="employee",cascade = CascadeType.ALL)
     private FileAttachment fileAttachment;
 
-    public Employee(Long id, @NotNull String name, @NotNull String family, @NotNull String nationalCode, @NotNull Gender gender, @NotNull Date birthDay, @NotNull Boolean isMarried, Integer childCount) {
-        this.id = id;
-        this.name = name;
-        this.family = family;
-        this.nationalCode = nationalCode;
-        this.gender = gender;
-        this.birthDay = birthDay;
-        this.isMarried = isMarried;
-        this.childCount = childCount;
-    }
-
     public Employee() {
     }
 
@@ -106,10 +91,6 @@ public class Employee {
         this.fileAttachment = fileAttachment;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setName(@NotNull String name) {
         this.name = name;
     }
@@ -136,10 +117,6 @@ public class Employee {
 
     public void setChildCount(Integer childCount) {
         this.childCount = childCount;
-    }
-
-    public Long getId() {
-        return this.id;
     }
 
     public @NotNull String getName() {

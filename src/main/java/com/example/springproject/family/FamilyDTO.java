@@ -1,13 +1,10 @@
 package com.example.springproject.family;
 
+import com.example.springproject.common.exception.BaseDTO;
 import com.example.springproject.employee.EmployeeDTO;
 import io.swagger.annotations.ApiModelProperty;
 
-public class FamilyDTO {
-
-    @ApiModelProperty(required = false, hidden = true)
-    private Long id;
-
+public class FamilyDTO extends BaseDTO {
     @ApiModelProperty(required = true, hidden = false)
     private String fullName;
 
@@ -16,14 +13,6 @@ public class FamilyDTO {
 
     @ApiModelProperty(required = true, hidden = false)
     private EmployeeDTO employee;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFullName() {
         return fullName;

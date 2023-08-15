@@ -4,20 +4,21 @@ import com.example.springproject.employee.Employee;
 import com.example.springproject.employee.EmployeeRepository;
 import com.example.springproject.employee.Gender;
 import com.example.springproject.employee.IEmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class SpringProjectApplication implements CommandLineRunner {
     EmployeeRepository repository;
     IEmployeeService service;
+
     public SpringProjectApplication(EmployeeRepository repository, IEmployeeService service) {
         this.repository = repository;
         this.service = service;
@@ -26,9 +27,10 @@ public class SpringProjectApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(SpringProjectApplication.class, args);
     }
+
     @Override
     public void run(String... args) throws Exception {
-        if (repository.count()==0) {
+        if (repository.count() == 0) {
             Employee emp1 = new Employee();
             emp1.setName("Awin");
             emp1.setFamily("Mariwani");
@@ -83,13 +85,13 @@ public class SpringProjectApplication implements CommandLineRunner {
         }
 
 
-        List<Employee> employeeList= (List<Employee>) repository.findAll();
-        List<Employee> employeeList2= repository.findAllByIsMarried(true);
-        List<Employee> employeeList3= repository.findAllByChildCountGreaterThan(1);
+        List<Employee> employeeList = (List<Employee>) repository.findAll();
+        List<Employee> employeeList2 = repository.findAllByIsMarried(true);
+        List<Employee> employeeList3 = repository.findAllByChildCountGreaterThan(1);
 
         System.out.println("finish");
 
-        List<Employee> all=service.getAll();
+        List<Employee> all = service.getAll();
         System.out.println();
 
 

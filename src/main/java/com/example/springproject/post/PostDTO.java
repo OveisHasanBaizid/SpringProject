@@ -1,30 +1,13 @@
 package com.example.springproject.post;
 
+import com.example.springproject.common.exception.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
 
-public class PostDTO {
-
-    @ApiModelProperty(required = false, hidden = true)
-    private Long id;
-
+public class PostDTO extends BaseDTO {
     @ApiModelProperty(required = true, hidden = false)
     private String title;
 
-
     public PostDTO() {
-    }
-
-    public PostDTO(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {

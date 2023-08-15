@@ -1,5 +1,6 @@
 package com.example.springproject.post_employee;
 
+import com.example.springproject.common.BaseEntity;
 import com.example.springproject.employee.Employee;
 import com.example.springproject.post.Post;
 import jakarta.persistence.*;
@@ -7,10 +8,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "tbl_postemployee",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"post_id", "employee_id"})})
-public class PostEmployee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class PostEmployee extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "post_id")
@@ -20,26 +18,7 @@ public class PostEmployee {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    public PostEmployee(Long id, Post post, Employee employee) {
-        this.id = id;
-        this.post = post;
-        this.employee = employee;
-    }
-
-    public PostEmployee(Post post, Employee employee) {
-        this.post = post;
-        this.employee = employee;
-    }
-
     public PostEmployee() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Post getPost() {

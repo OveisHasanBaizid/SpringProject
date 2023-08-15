@@ -1,17 +1,11 @@
 package com.example.springproject.employee;
 
-
+import com.example.springproject.common.exception.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
 
-public class EmployeeDTO {
-
-    @ApiModelProperty(required = false, hidden = true)
-    private Long id;
-
+public class EmployeeDTO extends BaseDTO {
     @ApiModelProperty(required = true, hidden = false)
-
     private String name;
-
 
     @ApiModelProperty(required = true, hidden = false)
 
@@ -38,23 +32,9 @@ public class EmployeeDTO {
 
     private Integer childCount;
 
-    public EmployeeDTO(Long id, String name, String family, String nationalCode, Gender gender, Long birthDay, Boolean isMarried, Integer childCount) {
-        this.id = id;
-        this.name = name;
-        this.family = family;
-        this.nationalCode = nationalCode;
-        this.gender = gender;
-        this.birthDay = birthDay;
-        this.isMarried = isMarried;
-        this.childCount = childCount;
-    }
-
     public EmployeeDTO() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -82,10 +62,6 @@ public class EmployeeDTO {
 
     public void setChildCount(Integer childCount) {
         this.childCount = childCount;
-    }
-
-    public Long getId() {
-        return this.id;
     }
 
     public String getName() {

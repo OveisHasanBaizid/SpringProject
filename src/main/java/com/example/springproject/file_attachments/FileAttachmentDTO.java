@@ -1,10 +1,10 @@
 package com.example.springproject.file_attachments;
 
+import com.example.springproject.common.exception.BaseDTO;
 import com.example.springproject.employee.EmployeeDTO;
 import io.swagger.annotations.ApiModelProperty;
-public class FileAttachmentDTO {
-    @ApiModelProperty(required = false, hidden = true)
-    private Long id;
+
+public class FileAttachmentDTO extends BaseDTO {
     @ApiModelProperty(required = true, hidden = false)
     private String personalImage;
     @ApiModelProperty(required = true, hidden = false)
@@ -13,14 +13,6 @@ public class FileAttachmentDTO {
     private EmployeeDTO employee;
 
     public FileAttachmentDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPersonalImage() {
